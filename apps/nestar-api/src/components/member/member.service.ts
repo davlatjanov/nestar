@@ -45,7 +45,7 @@ export class MemberService {
 	}
 
 	public async updateMember(): Promise<string> {
-		return 'updateMemberexecuted';
+		return 'updateMember executed';
 	}
 
 	public async getMember(): Promise<string> {
