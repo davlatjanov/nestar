@@ -9,7 +9,7 @@ import type { ObjectId } from 'mongoose';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { MemberType } from '../../libs/enums/member.enum';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { MemberUpdate } from '../../libs/dto/member/member.update';
+import { MemberUpdate, MemberUpdateForAdmin } from '../../libs/dto/member/member.update';
 import { shapeIntoMongoObjectId } from '../../libs/config';
 import { WithoutGuard } from '../auth/guards/without.guard';
 
@@ -99,13 +99,15 @@ export class MemberResolver {
 	@UseGuards(RolesGuard)
 	@Query(() => Members)
 	public async getAllMembersByAdmin(@Args('input') input: MembersInquiry): Promise<Members> {
-		console.log('Mutation: getAllMembersByAdmin');
+		console.log('QUERY: getAllMembersByAdmin');
 		return await this.memberService.getAllMembersByAdmin(input);
 	}
 
-	@Mutation(() => String)
-	public async updateMembersByAdmin(): Promise<string> {
-		console.log('Mutation updateMemberByAdmin');
-		return await this.memberService.updateMembersByAdmin();
+	@Roles(MemberType.ADMIN)
+	@UseGuards(RolesGuard)
+	@Mutation(() => Member)
+	public async updateMemberByAdmin(@Args('input') input: MemberUpdateForAdmin): Promise<Member> {
+		console.log('Mutation: updateMemberByAdmin');
+		return await this.memberService.updateMemberByAdmin(input);
 	}
 }
