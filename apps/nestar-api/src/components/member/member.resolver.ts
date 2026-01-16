@@ -56,7 +56,7 @@ export class MemberResolver {
 		console.log('Hello', memberNick);
 		return `Wassup ${memberNick}, you are ${memberType} and your id ( ${memberId} ) `;
 	}
-	@Roles(MemberType.USER)
+
 	@UseGuards(RolesGuard)
 	@Query(() => String)
 	public async checkAuthRoles(
