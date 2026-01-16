@@ -101,7 +101,7 @@ export class AllBoardArticlesInquiry {
 	@Field(() => Direction, { nullable: true })
 	direction?: Direction;
 
-	@IsNotEmpty()
-	@Field(() => ABAISearch)
+	@IsOptional()
+	@Field(() => ABAISearch, { nullable: true })
 	search: ABAISearch;
 }
