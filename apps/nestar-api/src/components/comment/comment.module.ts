@@ -24,6 +24,6 @@ import { PropertyModule } from '../property/property.module';
 		BoardArticleModule,
 	],
 	providers: [CommentResolver, CommentService],
-	exports: [CommentResolver, CommentService],
+	exports: [CommentService],
 })
 export class CommentModule {}

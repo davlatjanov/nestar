@@ -20,6 +20,6 @@ import { MemberModule } from '../member/member.module';
 		MemberModule,
 	],
 	providers: [BoardArticleResolver, BoardArticleService],
-	exports: [BoardArticleService, BoardArticleResolver],
+	exports: [BoardArticleService],
 })
 export class BoardArticleModule {}
