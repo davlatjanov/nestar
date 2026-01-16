@@ -55,7 +55,6 @@ export class PropertyService {
 
 		const targetProperty = await this.propertyModel.findOne(search).lean().exec();
 		if (!targetProperty) throw new InternalServerErrorException(Message.NO_DATA_FOUND);
-
 		if (memberId) {
 			const viewInput = { memberId: memberId, viewRefId: propertyId, viewGroup: ViewGroup.PROPERTY };
 			const newView = await this.viewService.recordView(viewInput);
@@ -65,8 +64,13 @@ export class PropertyService {
 				targetProperty.propertyViews++;
 			}
 		}
+
+		const likeInput = { memberId: memberId, likeRefId: propertyId, likeGroup: LikeGroup.PROPERTY };
+		//@ts-ignore
+		targetProperty.meLiked = await this.likeService.checkLikeExistance(likeInput);
 		//@ts-ignore
 		targetProperty.memberData = await this.memberService.getMember(null, targetProperty.memberId);
+		console.log('targetProperty', targetProperty);
 		return targetProperty;
 	}
 

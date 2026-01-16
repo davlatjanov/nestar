@@ -42,6 +42,7 @@ export class PropertyResolver {
 	): Promise<Property> {
 		console.log('QUERY: getProperty');
 		const propertyId = shapeIntoMongoObjectId(input);
+		console.log('memberId', memberId, 'propertyId', propertyId);
 		return await this.propertyService.getProperty(memberId, propertyId);
 	}
 
