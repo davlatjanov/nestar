@@ -12,7 +12,6 @@ import { MemberModule } from '../member/member.module';
 				schema: LikeSchema,
 			},
 		]),
-		MemberModule,
 	],
 	providers: [LikeService],
 	exports: [LikeService],
