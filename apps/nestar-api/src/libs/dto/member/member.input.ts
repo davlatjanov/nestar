@@ -3,7 +3,6 @@ import { IsIn, IsNotEmpty, IsOptional, Length, Min } from 'class-validator';
 import { MemberAuthType, MemberStatus, MemberType } from '../../enums/member.enum';
 import { availableAgentSorts, availableMemberSorts } from '../../config';
 import { Direction } from '../../enums/common.enum';
-import { Optional } from '@nestjs/common';
 
 @InputType()
 export class MemberInput {

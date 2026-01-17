@@ -84,10 +84,10 @@ export class Member {
 	accessToken?: string;
 
 	@Field(() => [MeLiked], { nullable: true })
-	meLiked: MeLiked[];
+	meLiked?: MeLiked[];
 
 	@Field(() => [MeFollowed], { nullable: true })
-	meFollowed: MeFollowed[];
+	meFollowed?: MeFollowed[];
 }
 
 @ObjectType()
