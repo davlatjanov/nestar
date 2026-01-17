@@ -7,7 +7,7 @@ import { AuthService } from '../auth/auth.service';
 import { Direction, Message } from '../../libs/enums/common.enum';
 import { FollowInquiry } from '../../libs/dto/follow/follow.input';
 import { T } from '../../libs/types/common';
-import { lookUpFollowerData, lookUpFollowingData } from '../../libs/config';
+import { lookUpAuthMemberLiked, lookUpFollowerData, lookUpFollowingData } from '../../libs/config';
 
 @Injectable()
 export class FollowService {
@@ -103,7 +103,7 @@ export class FollowService {
 						list: [
 							{ $skip: (page - 1) * limit },
 							{ $limit: limit },
-							// meLiked
+							lookUpAuthMemberLiked(memberId),
 							// meFollowed
 							lookUpFollowerData,
 							{ $unwind: '$followerData' },
