@@ -41,7 +41,7 @@ export class LikeService {
 		return result ? [{ memberId: memberId, likeRefId: likeRefId, myFavorite: true }] : [];
 	}
 
-	public async getFavoriteProperties(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
+	public async getFavorites(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
 		const { page, limit } = input;
 		const match: T = { likeGroup: LikeGroup.PROPERTY, memberId: memberId };
 		const data: T = await this.likeModel
