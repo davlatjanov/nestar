@@ -5,6 +5,7 @@ import { Properties, Property } from '../../libs/dto/property/property';
 import {
 	AgentPropertiesInquiry,
 	AllPropertiesInquiry,
+	OrdinaryInqury,
 	PropertiesInquiry,
 	PropertyInput,
 } from '../../libs/dto/property/property.input';
@@ -170,6 +171,10 @@ export class PropertyService {
 		}
 	}
 
+	public async getFavorites(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
+		const result = this.likeService.getFavoriteProperties(memberId, input);
+		return result;
+	}
 	public async getAgentProperties(memberId: ObjectId, input: AgentPropertiesInquiry): Promise<Properties> {
 		const { propertyStatus } = input.search;
 		if (propertyStatus === PropertyStatus.DELETE) throw new BadRequestException(Message.NOT_ALLOWED_REQUEST);
