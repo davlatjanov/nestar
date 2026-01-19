@@ -78,7 +78,7 @@ export class FollowService {
 						list: [
 							{ $skip: (page - 1) * limit },
 							{ $limit: limit },
-							lookUpAuthMemberLiked(memberId),
+							lookUpAuthMemberLiked(memberId, '$followingId'),
 							lookUpAuthMemberFollowed({
 								followerId: memberId,
 								followingId: '$followingId',
@@ -111,7 +111,7 @@ export class FollowService {
 						list: [
 							{ $skip: (page - 1) * limit },
 							{ $limit: limit },
-							lookUpAuthMemberLiked(memberId),
+							lookUpAuthMemberLiked(memberId, '$followerId'),
 							lookUpAuthMemberFollowed({
 								followerId: memberId,
 								followingId: '$followerId',
