@@ -64,9 +64,9 @@ export class BoardArticlesInquiry {
 	@Field(() => Direction, { nullable: true })
 	direction?: Direction;
 
-	@IsNotEmpty()
-	@Field(() => BAISearch)
-	search: BAISearch;
+	@IsOptional() // ← Change this
+	@Field(() => BAISearch, { nullable: true }) // ← Add nullable: true
+	search?: BAISearch; // ← Make it optional
 }
 
 @InputType()

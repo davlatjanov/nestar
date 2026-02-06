@@ -62,7 +62,7 @@ export class AgentsInquiry {
 	limit: number;
 
 	@IsOptional()
-	@IsIn([availableAgentSorts])
+	@IsIn(availableAgentSorts)
 	@Field(() => String, { nullable: true })
 	sort?: string;
 
@@ -70,11 +70,9 @@ export class AgentsInquiry {
 	@Field(() => Direction, { nullable: true })
 	direction?: Direction;
 
-	@IsNotEmpty()
-	@Field(() => AISearch)
-	search: AISearch;
-
-	/** FrontEnd dan keladigon requestlarning qolipi yani osha requestni ichida shular bolishi kerak**/
+	@IsOptional() // ← Change this
+	@Field(() => AISearch, { nullable: true }) // ← Add nullable: true
+	search?: AISearch; // ← Make it optional with ?
 }
 
 @InputType()

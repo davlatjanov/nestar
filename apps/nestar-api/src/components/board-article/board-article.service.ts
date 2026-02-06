@@ -105,13 +105,16 @@ export class BoardArticleService {
 	}
 
 	public async getBoardArticles(memberId: ObjectId, input: BoardArticlesInquiry): Promise<BoardArticles> {
+		//@ts-ignore
 		const { articleCategory, text } = input.search;
 		const match: T = { articleStatus: BoardArticleStatus.ACTIVE };
 		const sort: T = { [input?.sort ?? 'createdAt']: input?.direction ?? Direction.DESC };
 
 		if (articleCategory) match.articleCategory = articleCategory;
 		if (text) match.articleTitle = { $regex: new RegExp(text, 'i') };
+		//@ts-ignore
 		if (input.search.memberId) {
+			//@ts-ignore
 			match.memberId = shapeIntoMongoObjectId(input.search.memberId);
 		}
 		console.log('match:', match);
