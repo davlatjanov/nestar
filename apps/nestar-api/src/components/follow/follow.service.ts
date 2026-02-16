@@ -1,5 +1,5 @@
 import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
-import { Follower, Following, Followings } from '../../libs/dto/follow/follow';
+import { Follower, Followers, Following, Followings } from '../../libs/dto/follow/follow';
 import { Model, ObjectId } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { MemberService } from '../member/member.service';
@@ -96,7 +96,7 @@ export class FollowService {
 		return result[0];
 	}
 
-	public async getMemberFollowers(memberId: ObjectId, input: FollowInquiry): Promise<Followings> {
+	public async getMemberFollowers(memberId: ObjectId, input: FollowInquiry): Promise<Followers> {
 		const { page, limit, search } = input;
 		if (!search?.followingId) throw new InternalServerErrorException(Message.BAD_REQUEST);
 		const match: T = { followingId: search?.followingId };

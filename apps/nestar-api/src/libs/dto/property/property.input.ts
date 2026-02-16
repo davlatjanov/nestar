@@ -237,7 +237,7 @@ export class AllPropertiesInquiry {
 }
 
 @InputType()
-export class OrdinaryInqury {
+export class OrdinaryInquiry {
 	@IsNotEmpty()
 	@Min(1)
 	@Field(() => Int)

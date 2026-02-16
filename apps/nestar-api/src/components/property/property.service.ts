@@ -5,7 +5,7 @@ import { Properties, Property } from '../../libs/dto/property/property';
 import {
 	AgentPropertiesInquiry,
 	AllPropertiesInquiry,
-	OrdinaryInqury,
+	OrdinaryInquiry,
 	PropertiesInquiry,
 	PropertyInput,
 } from '../../libs/dto/property/property.input';
@@ -171,12 +171,12 @@ export class PropertyService {
 		}
 	}
 
-	public async getFavorites(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
+	public async getFavorites(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
 		const result = this.likeService.getFavorites(memberId, input);
 		return result;
 	}
 
-	public async getVisited(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
+	public async getVisited(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
 		const result = this.viewService.getVisited(memberId, input);
 		return result;
 	}

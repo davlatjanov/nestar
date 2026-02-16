@@ -8,7 +8,7 @@ import { Message } from '../../libs/enums/common.enum';
 import { Properties } from '../../libs/dto/property/property';
 import { LikeGroup } from '../../libs/enums/like.enum';
 import { lookUpFavorite } from '../../libs/config';
-import { OrdinaryInqury } from '../../libs/dto/property/property.input';
+import { OrdinaryInquiry } from '../../libs/dto/property/property.input';
 
 @Injectable()
 export class LikeService {
@@ -41,7 +41,7 @@ export class LikeService {
 		return result ? [{ memberId: memberId, likeRefId: likeRefId, myFavorite: true }] : [];
 	}
 
-	public async getFavorites(memberId: ObjectId, input: OrdinaryInqury): Promise<Properties> {
+	public async getFavorites(memberId: ObjectId, input: OrdinaryInquiry): Promise<Properties> {
 		const { page, limit } = input;
 		const match: T = { likeGroup: LikeGroup.PROPERTY, memberId: memberId };
 		const data: T = await this.likeModel
